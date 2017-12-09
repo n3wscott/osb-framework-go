@@ -9,7 +9,6 @@ import (
 )
 
 // TODO look for the service broker headers.
-// TODO the query params are not in 100% yet. fix dis.
 // swagger: http://petstore.swagger.io/?config=https://raw.githubusercontent.com/n3wscott/servicebroker/9bc40f42ecaa3ab89fe632404a3eb56f15fb03b8/openapi.yaml
 
 func (s *server) GetCatalog(w http.ResponseWriter, req *http.Request) {

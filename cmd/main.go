@@ -18,6 +18,6 @@ func main() {
 	broker := controller.BrokerController{}
 	s := server.CreateServer(&broker)
 
-	glog.Infof("Starting Broker, http://localhost:%d", addr)
-	glog.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", addr), s.Router))
+	glog.Infof("Starting Broker, http://localhost%s", *addr)
+	glog.Fatal(http.ListenAndServe(fmt.Sprintf("%s", *addr), s.Router))
 }
