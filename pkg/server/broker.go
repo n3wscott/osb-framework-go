@@ -2,10 +2,10 @@ package server
 
 import (
 	"encoding/json"
-	"net/http"
+	"github.com/golang/glog"
 	"github.com/gorilla/mux"
 	"github.com/n3wscott/osb-framework-go/pkg/apis/broker/v2"
-	"github.com/golang/glog"
+	"net/http"
 )
 
 // TODO look for the service broker headers.
@@ -15,6 +15,7 @@ func (s *server) GetCatalog(w http.ResponseWriter, req *http.Request) {
 	response, err := s.Controller.GetCatalog()
 
 	w.Header().Set("Content-Type", "application/json")
+
 	if err != nil {
 		json.NewEncoder(w).Encode(err)
 		return
@@ -105,8 +106,8 @@ func (s *server) PollServiceInstance(w http.ResponseWriter, r *http.Request) {
 
 	request := v2.LastOperationRequest{
 		ServiceID: serviceID,
-		PlanID: planID,
-		Operation:operation,
+		PlanID:    planID,
+		Operation: operation,
 	}
 
 	request.ServiceID = serviceID

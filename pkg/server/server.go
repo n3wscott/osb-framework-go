@@ -21,25 +21,25 @@ func CreateServer(controller v2.BrokerController) *server {
 
 	s.Router.HandleFunc("/v2/service_instances/{instance_id}", s.CreateServiceInstance).
 		Queries("accepts_incomplete", "{accepts_incomplete}").
-			Methods("PUT")
+		Methods("PUT")
 
 	s.Router.HandleFunc("/v2/service_instances/{instance_id}", s.UpdateServiceInstance).
 		Queries("accepts_incomplete", "{accepts_incomplete}").
-			Methods("PATCH")
+		Methods("PATCH")
 
 	s.Router.HandleFunc("/v2/service_instances/{instance_id}", s.DeleteServiceInstance).
 		Queries("service_id", "{service_id}", "plan_id", "{plan_id}", "accepts_incomplete", "{accepts_incomplete}").
-			Methods("DELETE")
+		Methods("DELETE")
 
 	s.Router.HandleFunc("/v2/service_instances/{instance_id}/last_operation", s.PollServiceInstance).
 		Queries("service_id", "{service_id}", "plan_id", "{plan_id}", "operation", "{operation}").
-			Methods("GET")
+		Methods("GET")
 
 	s.Router.HandleFunc("/v2/service_instances/{instance_id}/service_bindings/{binding_id}", s.CreateServiceBinding).Methods("PUT")
 
 	s.Router.HandleFunc("/v2/service_instances/{instance_id}/service_bindings/{binding_id}", s.DeleteServiceBinding).
 		Queries("service_id", "{service_id}", "plan_id", "{plan_id}").
-			Methods("DELETE")
+		Methods("DELETE")
 
 	return &s
 }
