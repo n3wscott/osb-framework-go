@@ -23,6 +23,8 @@ func CreateServer(controller v2.BrokerController) *server {
 		Queries("accepts_incomplete", "{accepts_incomplete}").
 		Methods("PUT")
 
+	s.Router.HandleFunc("/v2/service_instances/{instance_id}", s.OptionsHandler).Methods("OPTIONS")
+
 	s.Router.HandleFunc("/v2/service_instances/{instance_id}", s.UpdateServiceInstance).
 		Queries("accepts_incomplete", "{accepts_incomplete}").
 		Methods("PATCH")
